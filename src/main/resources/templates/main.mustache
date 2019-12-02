@@ -1,6 +1,22 @@
 <html>
 <head>Твой чеклист</head>
 <body>
-Введите тему для поиска чек-листа
+<div>
+    <form method="post">
+        <input type="text" name="creator" placeholder="Имя создателя">
+        <input type="text" name="name" placeholder="Название списка">
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<div>
+    {{#checklists}}
+        <div>
+            <b>{{id}}</b>
+            <span>{{creator}}</span>
+            <i>{{name}}</i>
+        </div>
+    {{/checklists}}
+</div>
 </body>
 </html>
