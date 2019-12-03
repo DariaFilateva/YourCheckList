@@ -18,21 +18,19 @@ public class WebController {
     @Autowired
     private ChecklistRepos checklistRepository;
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Map<String,
-            Object> model) {
-        model.put("name", name);
+    @GetMapping("/")
+    public String greeting(Map<String, Object> model) {
         return "greeting";
     }
 
-    @GetMapping
+    @GetMapping("/main")
     public String main(Map<String, Object> model) {
         Iterable<Checklist> allChecks = checklistRepository.findAll();
         model.put("checklists", allChecks);
         return "main";
     }
 
-    @PostMapping
+    @PostMapping("/main")
     public String add(@RequestParam String creator, @RequestParam String name, Map<String, Object> model) {
         Checklist checklist = new Checklist(creator, name);
 
