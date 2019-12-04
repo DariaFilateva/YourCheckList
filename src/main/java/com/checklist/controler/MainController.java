@@ -13,7 +13,7 @@ import com.checklist.repository.ChecklistRepos;
 import java.util.Map;
 
 @Controller
-public class WebController {
+public class MainController {
 
     @Autowired
     private ChecklistRepos checklistRepository;
