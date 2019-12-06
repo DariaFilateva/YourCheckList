@@ -1,27 +1,27 @@
 package com.checklist.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Checklist {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String creator;
-
     private String name;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
+
 
     public Checklist() {
     }
 
-    public Checklist(String creator, String name) {
-        this.creator = creator;
+    public Checklist(String name, User user) {
         this.name = name;
+        this.author = user;
     }
 
     public Integer getId() {
@@ -32,19 +32,23 @@ public class Checklist {
         this.id = id;
     }
 
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "Автор не задан";
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

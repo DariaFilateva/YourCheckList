@@ -2,7 +2,9 @@ package com.checklist.controler;
 
 
 import com.checklist.domain.Checklist;
+import com.checklist.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +33,8 @@ public class MainController {
     }
 
     @PostMapping("/main")
-    public String add(@RequestParam String creator, @RequestParam String name, Map<String, Object> model) {
-        Checklist checklist = new Checklist(creator, name);
+    public String add(@AuthenticationPrincipal User user, @RequestParam String name, Map<String, Object> model) {
+        Checklist checklist = new Checklist(name, user);
 
         checklistRepository.save(checklist);
 

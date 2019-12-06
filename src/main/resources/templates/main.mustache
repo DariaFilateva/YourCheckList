@@ -5,24 +5,23 @@
 <div>
     <form action="@{/logout}" method="post">
         <input type="hidden" name="_csrf value={{_csrf.token}}">
-        <input type="submit" value="Sign Out"/>
+        <input type="submit" value="Выйти"/>
     </form>
 </div>
 <div>
     <form method="post">
-        <input type="text" name="creator" placeholder="Имя создателя">
         <input type="text" name="name" placeholder="Название списка">
         <input type="hidden" name="_csrf value={{_csrf.token}}">
         <button type="submit">Добавить</button>
     </form>
 </div>
-
+<div>Ознакомься с чеклистами:</div>
 <div>
     {{#checklists}}
         <div>
             <b>{{id}}</b>
-            <span>{{creator}}</span>
             <i>{{name}}</i>
+            <strong>{{authorName}}</strong>
         </div>
     {{/checklists}}
 </div>
