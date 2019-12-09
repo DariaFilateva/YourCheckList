@@ -11,6 +11,8 @@
 <div>
     <form method="post">
         <input type="text" name="name" placeholder="Название списка">
+        <input type="text" name="element" placeholder="Элемент списка">
+        <input type="text" name="comment" placeholder="Комментарий">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
         <button type="submit">Добавить</button>
     </form>
@@ -22,6 +24,9 @@
             <b>{{id}}</b>
             <i>{{name}}</i>
             <strong>{{authorName}}</strong>
+        </div>
+        <div>
+
         </div>
     {{/checklists}}
 </div>
