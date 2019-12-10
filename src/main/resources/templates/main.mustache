@@ -13,7 +13,7 @@
         <input type="text" name="name" placeholder="Название списка">
         <input type="text" name="element" placeholder="Элемент списка">
         <input type="text" name="comment" placeholder="Комментарий">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <button type="submit">Добавить</button>
     </form>
 </div>
@@ -24,9 +24,13 @@
             <b>{{id}}</b>
             <i>{{name}}</i>
             <strong>{{authorName}}</strong>
-        </div>
-        <div>
-
+            <div>
+                <div>Список элементов</div>
+                {{#checklists.elements}}
+                    <b>{{element}}</b>
+                    <b>{{comment}}</b>
+                {{/checklists.elements}}
+            </div>
         </div>
     {{/checklists}}
 </div>

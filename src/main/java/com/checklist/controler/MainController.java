@@ -42,18 +42,18 @@ public class MainController {
                       @RequestParam String element, @RequestParam String comment,
                       Map<String, Object> model) {
         Checklist checklist = new Checklist(name, user);
-        ListElement el = new ListElement(checklist, element, comment);
+
+        ListElement el = new ListElement(element, comment);
+        checklist.addElement(el);
 
         checklistRepository.save(checklist);
         elementsRepository.save(el);
 
 
         Iterable<Checklist> allChecks = checklistRepository.findAll();
-        Iterable<ListElement> allElements = elementsRepository.
 
 
         model.put("checklists", allChecks);
-        model.put("elements", allElements);
         return "main";
     }
 }

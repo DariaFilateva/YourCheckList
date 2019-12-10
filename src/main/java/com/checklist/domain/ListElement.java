@@ -17,6 +17,14 @@ public class ListElement {
 
     String comment;
 
+    public ListElement() {
+    }
+
+    public ListElement(String element, String comment) {
+        this.element = element;
+        this.comment = comment;
+    }
+
     public ListElement(Checklist checklist, String element, String comment) {
         this.checklist = checklist;
         this.element = element;

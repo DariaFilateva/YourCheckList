@@ -1,6 +1,8 @@
 package com.checklist.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Checklist {
@@ -14,6 +16,13 @@ public class Checklist {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
+
+    @OneToMany(
+            mappedBy = "checklist",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<ListElement> elements = new ArrayList<>();
 
 
     public Checklist() {
@@ -51,4 +60,19 @@ public class Checklist {
     public void setAuthor(User author) {
         this.author = author;
     }
+
+    public void addElement(ListElement el) {
+        elements.add(el);
+        el.setChecklist(this);
+    }
+
+    public void removeElement(ListElement el) {
+        elements.remove(el);
+        el.setChecklist(null);
+    }
+
+    public List<ListElement> getElements() {
+        return elements;
+    }
+
 }
