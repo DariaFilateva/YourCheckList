@@ -39,11 +39,11 @@ public class MainController {
 
     @PostMapping("/main")
     public String add(@AuthenticationPrincipal User user, @RequestParam String name,
-                      @RequestParam String element, @RequestParam String comment,
+                      @RequestParam String e, @RequestParam String comment,
                       Map<String, Object> model) {
         Checklist checklist = new Checklist(name, user);
 
-        ListElement el = new ListElement(element, comment);
+        ListElement el = new ListElement(e, comment);
         checklist.addElement(el);
 
         checklistRepository.save(checklist);

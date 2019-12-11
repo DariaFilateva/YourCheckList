@@ -54,4 +54,12 @@ public class ListElement {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    public String getElement() {
+        return element;
+    }
+
+    public void setElement(String element) {
+        this.element = element;
+    }
 }
