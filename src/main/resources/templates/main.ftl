@@ -4,6 +4,7 @@
 <@c.page>
 <div>
     <@l.logout />
+    <span><a href="/user">Список пользователей</a></span>>
 </div>
 
 <div>
@@ -24,13 +25,13 @@
             <b>${checklist.name}</b>
             <strong>${checklist.authorName}</strong>
             <div>
-                <div>Список элементов</div>
-                <#list checklist.elements as el>
-                    <b>${el.element}</b>
-                    <b>Комментарий</b>
-                    <b>${el.comment}</b>
-                <#else>
-                </#list>
+            <#--  <div>Список элементов</div>
+  <#list checklist.elements as el>
+      <b>${el.element}</b>
+      <b>Комментарий</b>
+      <b>${el.comment}</b>
+  <#else>
+  </#list>-->
             </div>
         </div>
     </div>

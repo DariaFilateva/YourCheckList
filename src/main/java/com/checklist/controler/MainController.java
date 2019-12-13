@@ -52,7 +52,7 @@ public class MainController {
 
         Iterable<Checklist> allChecks = checklistRepository.findAll();
 
-
+        model.put("user", user);
         model.put("checklists", allChecks);
         return "main";
     }
