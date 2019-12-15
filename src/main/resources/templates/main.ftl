@@ -8,10 +8,11 @@
 </div>
 
 <div>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Название списка">
         <input type="text" name="e" placeholder="Элемент списка">
         <input type="text" name="comment" placeholder="Комментарий">
+        <input type="file" name="file">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <button type="submit">Добавить</button>
     </form>
@@ -25,6 +26,9 @@
             <b>${checklist.name}</b>
             <strong>${checklist.authorName}</strong>
             <div>
+                <#if checklist.filename??>
+                    <img src="/img/${checklist.filename}">
+                </#if>
             <#--  <div>Список элементов</div>
   <#list checklist.elements as el>
       <b>${el.element}</b>

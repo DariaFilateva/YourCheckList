@@ -17,6 +17,8 @@ public class Checklist {
     @JoinColumn(name = "user_id")
     private User author;
 
+    private String filename;
+
     @OneToMany(
             mappedBy = "checklist",
             cascade = CascadeType.ALL,
@@ -75,4 +77,11 @@ public class Checklist {
         return elements;
     }
 
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 }
