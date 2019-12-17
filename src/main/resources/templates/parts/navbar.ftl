@@ -1,3 +1,5 @@
+<#include "security.ftl">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Your checklist</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -13,9 +15,13 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/main">Checklists</a>
             </li>
+            <#if isAdmin>
             <li class="nav-item active">
                 <a class="nav-link" href="/user">Users</a>
             </li>
+            </#if>
         </ul>
+
+        <div class = "navbar-text">${name}</div>
     </div>
 </nav>
