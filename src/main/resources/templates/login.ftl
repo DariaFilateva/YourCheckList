@@ -4,5 +4,4 @@
 <@c.page>
 Вход
     <@l.login "/login" false/>
-<a href="/registration">Зарегистрироваться</a>
 </@c.page>

@@ -1,4 +1,5 @@
 <#include "security.ftl">
+<#import "login.ftl" as l>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Your checklist</a>
@@ -15,13 +16,14 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/main">Checklists</a>
             </li>
-            <#if isAdmin>
+        <#if isAdmin>
             <li class="nav-item active">
                 <a class="nav-link" href="/user">Users</a>
             </li>
-            </#if>
+        </#if>
         </ul>
 
-        <div class = "navbar-text">${name}</div>
+        <div class="navbar-text mr-3">${name}</div>
+    <@l.logout />
     </div>
 </nav>
