@@ -49,7 +49,7 @@
 
         <div class="card my-3">
             <#if checklist.filename??>
-                <img src="/img/${checklist.filename}  class="card-img-top"">
+                <img src="/img/${checklist.filename}"  class="card-img-top">
             </#if>
 
             <div class="m-2">
