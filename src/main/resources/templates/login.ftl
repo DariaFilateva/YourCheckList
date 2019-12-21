@@ -2,6 +2,6 @@
 <#import "parts/login.ftl" as l>
 
 <@c.page>
-<div class="mb-1">Вход</div>
+${message?if_exists}
     <@l.login "/login" false/>
 </@c.page>
