@@ -38,14 +38,7 @@ public class UserService implements UserDetailsService {
         user.setActivationCode(UUID.randomUUID().toString());
         userRepo.save(user);
 
-        if (!StringUtils.isEmpty(user.getEmail())) {
-            String message = String.format(
-                    "Hello, %s! \n" +
-                            "Welcome to Sweater. Please, visit next link: http://localhost:8080/activate/%s",
-                    user.getUsername(),
-                    user.getActivationCode());
-            mailSender.send(user.getEmail(), "Активация CheckMe", message);
-        }
+        sendMessage(user);
 
         return true;
     }
@@ -82,5 +75,38 @@ public class UserService implements UserDetailsService {
         }
 
         userRepo.save(user);
+    }
+
+    public void updateProfile(User user, String password, String email) {
+        String userEmail = user.getEmail();
+
+        boolean isEmailChange = email != null && !email.equals(userEmail) || (userEmail != null && !userEmail.equals(email));
+        if (isEmailChange) {
+            user.setEmail(email);
+            if (!StringUtils.isEmpty(email)) {
+                user.setActivationCode(UUID.randomUUID().toString());
+            }
+        }
+
+        if (StringUtils.isEmpty(password)) {
+            user.setPassword(password);
+        }
+
+        userRepo.save(user);
+        if (isEmailChange) {
+            sendMessage(user);
+        }
+
+    }
+
+    private void sendMessage(User user) {
+        if (!StringUtils.isEmpty(user.getEmail())) {
+            String message = String.format(
+                    "Hello, %s! \n" +
+                            "Welcome to Sweater. Please, visit next link: http://localhost:8080/activate/%s",
+                    user.getUsername(),
+                    user.getActivationCode());
+            mailSender.send(user.getEmail(), "Активация CheckMe", message);
+        }
     }
 }

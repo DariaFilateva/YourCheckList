@@ -6,6 +6,7 @@ import com.checklist.domain.User;
 import com.checklist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,5 +46,20 @@ public class UserController {
         userService.saveUser(user, username, form);
 
         return "redirect:/user";
+    }
+
+    @GetMapping("profile")
+    public String getProfile(Model model, @AuthenticationPrincipal User user) {
+        model.addAttribute("username", user.getUsername());
+        model.addAttribute("email", user.getEmail());
+        return "profile";
+
+    }
+
+    @PostMapping("profile")
+    public String updateProfile(@AuthenticationPrincipal User user, String password, String email) {
+
+        userService.updateProfile(user, password, email);
+        return "redirect:/user/profile";
     }
 }
