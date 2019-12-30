@@ -18,9 +18,19 @@
 <div class="collapse" id="collapseExample">
     <div class="form-group mt-3">
         <form method="post" enctype="multipart/form-data">
+
+
             <div class="form-group">
-                <input type="text" class="form-control" name="name" placeholder="Название списка">
+                <input type="text" class="form-control ${(textError??)?string('is-invalid', '')}"
+                       value="<#if checklist??>${checklist.name}</#if>" name="name" placeholder="Название списка">
+                <#if textError??>
+                    <div class="invalid-feedback">
+                    ${textError}
+                    </div>
+                </#if>
             </div class="form-group">
+
+
             <div class="form-group">
                 <input type="text" class="form-control" name="e" placeholder="Элемент списка">
             </div>
@@ -49,7 +59,7 @@
 
         <div class="card my-3">
             <#if checklist.filename??>
-                <img src="/img/${checklist.filename}"  class="card-img-top">
+                <img src="/img/${checklist.filename}" class="card-img-top">
             </#if>
 
             <div class="m-2">

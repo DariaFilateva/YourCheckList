@@ -1,6 +1,9 @@
 package com.checklist.domain;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +14,8 @@ public class Checklist {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Пожалуйста, заполните имя Вашего списка")
+    @Length(max = 255, message = "Наименование слишком длинное")
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
