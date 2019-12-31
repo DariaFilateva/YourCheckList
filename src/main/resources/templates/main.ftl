@@ -15,7 +15,7 @@
     Создать свой чеклист
 </a>
 
-<div class="collapse" id="collapseExample">
+<div class="collapse <#if checklist??>show</#if>" id="collapseExample">
     <div class="form-group mt-3">
         <form method="post" enctype="multipart/form-data">
 

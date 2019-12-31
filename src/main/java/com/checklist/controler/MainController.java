@@ -89,9 +89,11 @@ public class MainController {
                 checklist.setFilename(resultFileName);
             }
 
+
             ListElement el = new ListElement(e, comment);
             checklist.addElement(el);
 
+            model.addAttribute("checklist", null);
             checklistRepository.save(checklist);
             elementsRepository.save(el);
         }
