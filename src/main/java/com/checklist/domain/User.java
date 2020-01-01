@@ -25,7 +25,7 @@ public class User implements UserDetails {
     private String password;
 
     @Transient
-    @NotBlank(message = "Подтвержденный пароль не может быть пустым")
+    @NotBlank(message = "Подтвердите пароль")
     private String password2;
 
     private boolean active;

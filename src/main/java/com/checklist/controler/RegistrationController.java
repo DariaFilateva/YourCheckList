@@ -31,10 +31,11 @@ public class RegistrationController {
         }
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = ControllerUtils.getErrors(bindingResult);
+            model.mergeAttributes(errors);
             return "registration";
         }
         if (!userService.addUser(user)) {
-            model.addAttribute("message", "Пользователь существует!");
+            model.addAttribute("usernameErrors", "Пользователь существует!");
             return "registration";
         }
         return "redirect:/login";

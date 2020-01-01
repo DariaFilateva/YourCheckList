@@ -21,11 +21,11 @@
 
 
             <div class="form-group">
-                <input type="text" class="form-control ${(textError??)?string('is-invalid', '')}"
+                <input type="text" class="form-control ${(nameError??)?string('is-invalid', '')}"
                        value="<#if checklist??>${checklist.name}</#if>" name="name" placeholder="Название списка">
-                <#if textError??>
+                <#if nameError??>
                     <div class="invalid-feedback">
-                    ${textError}
+                    ${nameError}
                     </div>
                 </#if>
             </div class="form-group">
