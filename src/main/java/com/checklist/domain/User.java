@@ -24,10 +24,6 @@ public class User implements UserDetails {
     @NotBlank(message = "Пароль не может быть пустым")
     private String password;
 
-    @Transient
-    @NotBlank(message = "Подтвердите пароль")
-    private String password2;
-
     private boolean active;
 
     @Email(message = "Не корректный email")
@@ -124,13 +120,5 @@ public class User implements UserDetails {
 
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
-    }
-
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
     }
 }
